@@ -20,15 +20,9 @@ int main(void)
 	// Inicjalizacja sterownika LCD
 	LcdInit();
 
-	// Tworzenie pierwszego wiersza
-	Lcd("CPU: ");
-	LcdDec(F_CPU);
-	Lcd(" Hz");
-
-	// Przejście do drugiej linii
-	Lcd2;
-	// Tworzenie drugiego wiersza
-	Lcd("Konopnickiej Com");
+	Lcd("    DS18B20");
+	Lcd2; // Przejście do drugiej linii
+	Lcd("Konopnickiej.Com");
 
 	// Deklarujemy zmienną służącą jako licznik
 	uint8_t licznik = 0;
