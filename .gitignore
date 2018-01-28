@@ -50,3 +50,16 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+# Eclipse project files
+Debug/
+Release/
+.project
+.cproject
+.settings/
+.pioenvs
+.piolibdeps
+.vscode/
+.vscode/c_cpp_properties.json
+.vscode/launch.json
+.clang_complete
+.gcc-flags.json
