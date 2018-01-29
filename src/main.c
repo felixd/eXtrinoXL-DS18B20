@@ -1,42 +1,29 @@
-/*
-  Data: 28.01.2018
-  Paweł 'felixd' Wojciechowski
-  Outsourcing IT - Konopnickiej.Com
-  http://www.konopnickiej.com
-
-*/
-
-#define F_CPU 2000000UL
-#include <avr/io.h>
+#include <stdlib.h>
+#include <string.h>
+#include <avr/interrupt.h>
 #include <util/delay.h>
-#include <hd44780.h>
 
-int main(void)
-{
-	// Konfiguracja przycisku FLIP
-	PORTE.DIRCLR = PIN5_bm;				 // pin E5 jako wejście
-	PORTE.PIN5CTRL = PORT_OPC_PULLUP_gc; // podciągnięcie do zasilania
+#include <ds18b20.h>
 
-	// Inicjalizacja sterownika LCD
-	LcdInit();
+#define UART_BAUD_RATE 2400
+#include <uart.h>
 
-	Lcd("    DS18B20");
-	Lcd2; // Przejście do drugiej linii
-	Lcd("Konopnickiej.Com");
+int main(void) {
+	char printbuff[100];
+	double d = 0;
 
-	// Deklarujemy zmienną służącą jako licznik
-	uint8_t licznik = 0;
+	//init UART
+	uart_init( UART_BAUD_SELECT(UART_BAUD_RATE,F_CPU) );
 
-	while (1)
-	{
-		if (!(PORTE.IN & PIN5_bm))
-		{					 // jeżeli przycisk FLIP jest wciśnięty
-			licznik++;		 // zwiększ licznik o 1
-			LcdClear();		 // wyczyśc wyświetlacz
-			Lcd("Licznik:"); // wyświetlenie napisu
-			Lcd2;			 // przejście do drugiej linii
-			LcdDec(licznik); // wyświetlenie zmiennej liczbowej
-			_delay_ms(100);  // czekanie 100ms
-		}
+	//init interrupt
+	sei();
+
+	for (;;) {
+		d = ds18b20_gettemp();
+
+		dtostrf(d, 10, 3, printbuff);
+		_delay_ms(500);
 	}
+	
+	return 0;
 }
