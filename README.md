@@ -21,7 +21,9 @@ $ ./get_libs.sh
 ### Kompliacja i programowanie: avrdude, Platformio IO i FLIP (FLIP2)
 Upload pliku HEX odbywa się za pomocą oprogramowania FLIP (ang. FLexible In-system Programmer) firmy Atmel wbudowanego w bootloader XMEGA128A3U. Obsługiwany jest przez `avrdude` a uruchamiany poniszym poleceniem:
 
-```./upload.sh```
+```
+$ ./upload.sh
+```
 
 Patrz plik [upload.sh](upload.sh)
 
