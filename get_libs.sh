@@ -1,13 +1,11 @@
-
 #!/bin/bash
-
 # Author:   Paweł 'felixd' Wojciechowski
 # Company:  (c) 2018 - Outsourcing IT - Konopnickiej.Com
 # WWW:      http://www.konopnickiej.com
 
 cd lib
 
-# HD44780 LCD library
+# LCD - HD44780 
 if [ -d "hd44780" ]; then 
  cd hd44780
  git pull
@@ -15,6 +13,9 @@ if [ -d "hd44780" ]; then
 else
  git clone https://github.com/eXtrinoXL/hd44780
 fi
+
+# PL: Przygotowania do kolejnej wersji ;)
+# EN: Preparation for next version :)
 
 # DS18B20 thermometer library
 # if [ -d "ds18b20" ]; then 
