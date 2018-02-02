@@ -11,7 +11,7 @@ if [ -d "hd44780" ]; then
  git pull
  cd ..
 else
- git clone https://github.com/eXtrinoXL/hd44780
+ git clone https://gitlab.com/extrinoxl/libs/hd44780
 fi
 
 # PL: Przygotowania do kolejnej wersji ;)
@@ -23,5 +23,5 @@ fi
 #  git pull
 #  cd ..
 # else
-#  git clone https://github.com/eXtrinoXL/ds18b20
+#  git clone https://gitlab.com/extrinoxl/libs/ds18b20
 # fi
